@@ -1,0 +1,10 @@
+body{
+    background-color: mediumseagreen;
+}
+#graphCanvas{
+    border: solid 3px purple;
+    background-color: pink;
+}
+.whinerThing{
+    background-color: lightgreen;
+}

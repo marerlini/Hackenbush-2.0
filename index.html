@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="menu_css/menu.css">
+    <link id="themeStylesheet" rel="stylesheet" href="menu_css/menu_green.css">
+    <link rel="stylesheet" href="rules/rules.css">
+    <title>Hackenbush</title>
+</head>
+<body>
+<div class="left">
+    <h1 class="menuTitle">Hackenbush</h1>
+    <img class="bushImg" src="menu_css/pictures/bush.jpg" alt="кущик">
+    <div class="styles">
+        <ul>
+            <li>
+                <input type="radio" id="option1" name="options" value="Зелень" checked>
+                <label for="option1">Зелень</label>
+            </li>
+            <li>
+                <input type="radio" id="option2" name="options" value="Квіочки">
+                <label for="option2">Квіочки</label>
+            </li>
+            <li>
+                <input type="radio" id="option3" name="options" value="Чорний">
+                <label for="option3">Чорний</label>
+            </li>
+            <li>
+                <input type="radio" id="option4" name="options" value="Білий">
+                <label for="option4">Білий</label>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        const radioButtons = document.querySelectorAll('input[name="options"]');
+        const stylesheet = document.getElementById('themeStylesheet');
+
+        const themes = {
+            "Зелень": "menu_css/menu_green.css",
+            "Квіочки": "menu_css/menu_flowers.css",
+            "Чорний": "menu_css/menu_black.css",
+            "Білий": "menu_css/menu_white.css"
+        };
+
+        const savedTheme = localStorage.getItem('selectedTheme');
+
+        if (savedTheme && themes[savedTheme]) {
+            stylesheet.href = themes[savedTheme];
+        }
+
+        radioButtons.forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.checked) {
+                    const selectedTheme = this.value;
+                    localStorage.setItem('selectedTheme', selectedTheme);
+                    stylesheet.href = themes[selectedTheme];
+                }
+            });
+        });
+
+    </script>
+</div>
+<div class="menu">
+    <button>Грати одному</button>
+    <button>Грати вдвох</button>
+    <a href="play.html">на гру</a>
+    <a href="choose.html">на вибір</a>
+    <button class="createGrBt" id="goToPage">Створити свій малюнок</button>
+    <script>
+        document.getElementById('goToPage').addEventListener('click', function() {
+            window.location.href = 'create.html';
+        });
+    </script>
+</div>
+<div class="rules" id="showPopup">Правила</div>
+<div class="overlay" id="popupOverlay">
+    <div class="popup">
+        <h2>Правила</h2>
+        <p>
+            <strong>Хакенбуш</strong> — це математична гра на графах, у якій гравці по черзі видаляють ребра. У варіанті "зелений Хакенбуш" всі ребра є нейтральними, і будь-який гравець може видалити будь-яке доступне ребро.
+            Поле гри складається з графа, де вершини з'єднані між собою ребрами, а деякі вершини прикріплені до "землі". Гравці ходять по черзі, і якщо після видалення ребра будь-які вершини або ребра залишаються від'єднаними від "землі", вони також видаляються.
+            Мета гри — змусити суперника залишитися без доступного ходу. Гра закінчується, коли один із гравців не може ходити, і він програє. У зеленому варіанті важлива стратегія, яка включає аналіз доступних ребер та розрахунок наслідків їх видалення.
+        </p>
+        <button id="closePopup">Закрити</button>
+    </div>
+</div>
+<script src="rules/rules.js"></script></body>
+
+</html>

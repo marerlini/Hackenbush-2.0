@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="choose_css/choose.css">
+    <link id="themeStylesheet" rel="stylesheet" href="choose_css/choose_green.css">
+    <link rel="stylesheet" href="rules/rules.css">
+    <title>Hackenbush</title>
+</head>
+<body>
+<div class="left">
+    <p>Обери з заданих малюнків</p>
+    <div class="testGraphAll">
+        <div class="testGraph">1</div>
+        <div class="testGraph">2</div>
+        <div class="testGraph">3</div>
+        <div class="testGraph">4</div>
+        <div class="testGraph">5</div>
+        <div class="testGraph">6</div>
+    </div>
+
+    <div class="difficultyChoose">
+        <label for="difficulty">Обери складність</label>
+        <select id="difficulty">
+            <option value="easy" selected>Легко</option>
+            <option value="medium">Нада думати</option>
+            <option value="hard">Визнай поразку</option>
+        </select>
+    </div>
+
+    <label class="names" style="display: none">Назвіть себе
+        <input type="text" id="player1" name="player1" placeholder="Перший гравець">
+        <input type="text" id="player2" name="player2" placeholder="Другий гравець">
+    </label>
+
+</div>
+<div class="menu">
+        <div class="search">
+            <label for="graphSearch">Або знайди серед створениx іншими</label>
+            <input type="text" id="graphSearch" name="graphSearch" placeholder="Може шось цікаве буде...">
+            <button>Найти</button>
+        </div>
+
+    <div class="Testsearch">Потім тут буде список вибір або відображаємий малюнок</div>
+
+</div>
+<div class="rules" id="showPopup">Правила</div>
+<div class="overlay" id="popupOverlay">
+    <div class="popup">
+        <h2>Правила</h2>
+        <p>
+            <strong>Хакенбуш</strong> — це математична гра на графах, у якій гравці по черзі видаляють ребра. У варіанті "зелений Хакенбуш" всі ребра є нейтральними, і будь-який гравець може видалити будь-яке доступне ребро.
+            Поле гри складається з графа, де вершини з'єднані між собою ребрами, а деякі вершини прикріплені до "землі". Гравці ходять по черзі, і якщо після видалення ребра будь-які вершини або ребра залишаються від'єднаними від "землі", вони також видаляються.
+            Мета гри — змусити суперника залишитися без доступного ходу. Гра закінчується, коли один із гравців не може ходити, і він програє. У зеленому варіанті важлива стратегія, яка включає аналіз доступних ребер та розрахунок наслідків їх видалення.
+        </p>
+        <button id="closePopup">Закрити</button>
+    </div>
+</div>
+<script src="rules/rules.js"></script>
+<script>
+    const themes = {
+        "Зелень": "choose_css/choose_green.css",
+        "Квіочки": "choose_css/choose_flower.css",
+        "Чорний": "choose_css/choose_black.css",
+        "Білий": "choose_css/choose_white.css"
+    };
+
+    const savedTheme = localStorage.getItem('selectedTheme');
+    const stylesheet = document.getElementById('themeStylesheet');
+
+    if (savedTheme && themes[savedTheme]) {
+        stylesheet.href = themes[savedTheme];
+    }
+</script>
+</body>
+</html>

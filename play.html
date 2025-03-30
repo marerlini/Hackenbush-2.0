@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="play_css/play.css">
+    <link id="themeStylesheet" rel="stylesheet" href="play_css/play_green.css">
+    <link rel="stylesheet" href="rules/rules.css">
+    <title>Hackenbush</title>
+</head>
+<body>
+<div class="left">
+    <canvas id="graphCanvas"></canvas>
+</div>
+<div class="menu">
+    <h2 id="turnIndicator">Твоя черга ходити</h2>
+
+    <div class="whinerThing" style="display: none">
+        <h2 id="whiner">Гравець 1</h2>
+        <p>Переміг</p>
+    </div>
+
+    <button id="returnToMenu">Назад в меню</button>
+
+</div>
+<div class="rules" id="showPopup">Правила</div>
+<div class="overlay" id="popupOverlay">
+    <div class="popup">
+        <h2>Правила</h2>
+        <p>
+            <strong>Хакенбуш</strong> — це математична гра на графах, у якій гравці по черзі видаляють ребра. У варіанті "зелений Хакенбуш" всі ребра є нейтральними, і будь-який гравець може видалити будь-яке доступне ребро.
+            Поле гри складається з графа, де вершини з'єднані між собою ребрами, а деякі вершини прикріплені до "землі". Гравці ходять по черзі, і якщо після видалення ребра будь-які вершини або ребра залишаються від'єднаними від "землі", вони також видаляються.
+            Мета гри — змусити суперника залишитися без доступного ходу. Гра закінчується, коли один із гравців не може ходити, і він програє. У зеленому варіанті важлива стратегія, яка включає аналіз доступних ребер та розрахунок наслідків їх видалення.
+        </p>
+        <button id="closePopup">Закрити</button>
+    </div>
+</div>
+<script src="rules/rules.js"></script>
+<script>
+    const themes = {
+        "Зелень": "play_css/play_green.css",
+        "Квіочки": "play_css/play_flower.css",
+        "Чорний": "play_css/play_black.css",
+        "Білий": "play_css/play_white.css"
+    };
+
+    const savedTheme = localStorage.getItem('selectedTheme');
+    const stylesheet = document.getElementById('themeStylesheet');
+
+    if (savedTheme && themes[savedTheme]) {
+        stylesheet.href = themes[savedTheme];
+    }
+</script>
+</body>
+</html>

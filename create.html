@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="create_css/create.css">
+    <link id="themeStylesheet" rel="stylesheet" href="create_css/create_green.css">
+    <link rel="stylesheet" href="rules/rules.css">
+    <title>Hackenbush</title>
+</head>
+<body>
+<div class="left">
+    <canvas id="graphCanvas"></canvas>
+</div>
+<div class="menu">
+    <form>
+        <label for="nameInput">Назви своє творіння</label>
+        <input type="text" id="nameInput" name="nameInput" placeholder="Тобі потім за цим шукати...">
+    </form>
+
+    <button>Додати точку</button>
+    <button>Додати ребро</button>
+    <button id="saveCreat">Зберегти</button>
+
+</div>
+<div class="rules" id="showPopup">Правила</div>
+<div class="overlay" id="popupOverlay">
+    <div class="popup">
+        <h2>Правила</h2>
+        <p>
+            <strong>Хакенбуш</strong> — це математична гра на графах, у якій гравці по черзі видаляють ребра. У варіанті "зелений Хакенбуш" всі ребра є нейтральними, і будь-який гравець може видалити будь-яке доступне ребро.
+            Поле гри складається з графа, де вершини з'єднані між собою ребрами, а деякі вершини прикріплені до "землі". Гравці ходять по черзі, і якщо після видалення ребра будь-які вершини або ребра залишаються від'єднаними від "землі", вони також видаляються.
+            Мета гри — змусити суперника залишитися без доступного ходу. Гра закінчується, коли один із гравців не може ходити, і він програє. У зеленому варіанті важлива стратегія, яка включає аналіз доступних ребер та розрахунок наслідків їх видалення.
+        </p>
+        <button id="closePopup">Закрити</button>
+    </div>
+</div>
+<script src="rules/rules.js"></script>
+<script>
+    const themes = {
+        "Зелень": "create_css/create_green.css",
+        "Квіочки": "create_css/create_flower.css",
+        "Чорний": "create_css/create_black.css",
+        "Білий": "create_css/create_white.css"
+    };
+
+    const savedTheme = localStorage.getItem('selectedTheme');
+    const stylesheet = document.getElementById('themeStylesheet');
+
+    if (savedTheme && themes[savedTheme]) {
+        stylesheet.href = themes[savedTheme];
+    }
+</script>
+</body>
+</html>

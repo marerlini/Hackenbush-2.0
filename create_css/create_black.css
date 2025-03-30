@@ -1,0 +1,7 @@
+body{
+    background-color: gray;
+}
+#graphCanvas{
+    border: solid 3px purple;
+    background-color: pink;
+}
