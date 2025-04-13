@@ -14,7 +14,7 @@
     <div class="styles">
         <ul>
             <li>
-                <input type="radio" id="option1" name="options" value="Зелень" checked>
+                <input type="radio" id="option1" name="options" value="Зелень">
                 <label for="option1">Зелень</label>
             </li>
             <li>
@@ -31,47 +31,13 @@
             </li>
         </ul>
     </div>
-
-    <script>
-        const radioButtons = document.querySelectorAll('input[name="options"]');
-        const stylesheet = document.getElementById('themeStylesheet');
-
-        const themes = {
-            "Зелень": "menu_css/menu_green.css",
-            "Квіочки": "menu_css/menu_flowers.css",
-            "Чорний": "menu_css/menu_black.css",
-            "Білий": "menu_css/menu_white.css"
-        };
-
-        const savedTheme = localStorage.getItem('selectedTheme');
-
-        if (savedTheme && themes[savedTheme]) {
-            stylesheet.href = themes[savedTheme];
-        }
-
-        radioButtons.forEach(radio => {
-            radio.addEventListener('change', function() {
-                if (this.checked) {
-                    const selectedTheme = this.value;
-                    localStorage.setItem('selectedTheme', selectedTheme);
-                    stylesheet.href = themes[selectedTheme];
-                }
-            });
-        });
-
-    </script>
 </div>
 <div class="menu">
-    <button>Грати одному</button>
-    <button>Грати вдвох</button>
-    <a href="play.html">на гру</a>
-    <a href="choose.html">на вибір</a>
+    <button id="single-player-btn">Грати одному</button>
+    <button id="two-player-btn">Грати вдвох</button>
+
     <button class="createGrBt" id="goToPage">Створити свій малюнок</button>
-    <script>
-        document.getElementById('goToPage').addEventListener('click', function() {
-            window.location.href = 'create.html';
-        });
-    </script>
+
 </div>
 <div class="rules" id="showPopup">Правила</div>
 <div class="overlay" id="popupOverlay">
@@ -85,6 +51,7 @@
         <button id="closePopup">Закрити</button>
     </div>
 </div>
-<script src="rules/rules.js"></script></body>
-
+<script src="rules/rules.js"></script>
+<script src="menu.js"></script>
+</body>
 </html>

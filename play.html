@@ -12,14 +12,14 @@
     <canvas id="graphCanvas"></canvas>
 </div>
 <div class="menu">
-    <h2 id="turnIndicator">Твоя черга ходити</h2>
+    <h2 id="turnIndicator">Гравець ходить</h2>
 
-    <div class="whinerThing" style="display: none">
-        <h2 id="whiner">Гравець 1</h2>
-        <p>Переміг</p>
+    <div class="whinerThing" id="whinerThing" style="display: none">
+        <h2 id="whiner">Ти</h2>
+        <h3>Переміг</h3>
     </div>
 
-    <button id="returnToMenu">Назад в меню</button>
+    <button id="returnToMenu" onclick="returnToMenu()">Назад в меню</button>
 
 </div>
 <div class="rules" id="showPopup">Правила</div>
@@ -50,5 +50,6 @@
         stylesheet.href = themes[savedTheme];
     }
 </script>
+<script src="play.js"></script>
 </body>
 </html>

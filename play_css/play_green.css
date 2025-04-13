@@ -2,8 +2,8 @@ body{
     background-color: mediumseagreen;
 }
 #graphCanvas{
-    border: solid 3px purple;
-    background-color: pink;
+    border: solid 3px DarkSlateGrey;
+    background-color: DarkSeaGreen;
 }
 .whinerThing{
     background-color: lightgreen;

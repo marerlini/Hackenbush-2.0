@@ -8,12 +8,6 @@ body{
     margin: 0;
     padding: 0;
 }
-#graphCanvas{
-    border-radius: 4px;
-    height: 615px;
-    width: 800px;
-    margin: 5px;
-}
 
 .left{
     grid-column: 1;
@@ -23,11 +17,36 @@ body{
     flex-direction: column;
     font-size: 200%;
 }
+#g0{
+    background-image: url('graphs_pics/Graph_1.png');
+    background-size: cover;
+}
+#g1{
+    background-image: url('graphs_pics/Graph_2.png');
+    background-size: cover;
+}
+#g2{
+     background-image: url('graphs_pics/Graph_3.png');
+     background-size: cover;
+}
+#g3{
+      background-image: url('graphs_pics/Graph_4.png');
+      background-size: cover;
+}
+#g4{
+       background-image: url('graphs_pics/Graph_5.png');
+       background-size: cover;
+}
+#g5{
+        background-image: url('graphs_pics/Graph_6.png');
+        background-size: cover;
+}
 .testGraph{
     width: 16vw;
     height: 12vw;
     border-radius: 4px;
     margin: 2px;
+    cursor: pointer;
 }
 .testGraphAll{
     display: flex;
@@ -35,28 +54,37 @@ body{
     flex-wrap: wrap;
 }
 
-.difficultyChoose{
+.bottom{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: auto;
+    align-items: center;
     margin-top: auto;
+}
+
+.play_button{
+    width: 40%;
+    height: 5vh;
+}
+
+.difficultyChoose{
     display: flex;
     flex-direction: column;
-    margin-bottom: 5vh;
 }
 .difficultyChoose select{
     height: 5vh;
-    width: 50%;
+    width: 80%;
 }
 
-
 .names{
-    margin-top: auto;
     display: flex;
     flex-direction: column;
-    margin-bottom: 5vh;
 }
 
 .names input{
     height: 5vh;
-    width: 50%;
+    width: 80%;
 }
 
 .menu{

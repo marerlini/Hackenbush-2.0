@@ -11,27 +11,36 @@
 <div class="left">
     <p>Обери з заданих малюнків</p>
     <div class="testGraphAll">
-        <div class="testGraph">1</div>
-        <div class="testGraph">2</div>
-        <div class="testGraph">3</div>
-        <div class="testGraph">4</div>
-        <div class="testGraph">5</div>
-        <div class="testGraph">6</div>
+        <div class="testGraph" id="g0" data-id="0"></div>
+        <div class="testGraph" id="g1" data-id="1"></div>
+        <div class="testGraph" id="g2" data-id="2"></div>
+        <div class="testGraph" id="g3" data-id="3"></div>
+        <div class="testGraph" id="g4" data-id="4"></div>
+        <div class="testGraph" id="g5" data-id="5"></div>
     </div>
+    <h3 id="graph-dumb"></h3>
 
-    <div class="difficultyChoose">
-        <label for="difficulty">Обери складність</label>
-        <select id="difficulty">
-            <option value="easy" selected>Легко</option>
-            <option value="medium">Нада думати</option>
-            <option value="hard">Визнай поразку</option>
-        </select>
+    <div class="bottom">
+        <div id="single-player-element" style="display: none;flex-grow: 1">
+            <div class="difficultyChoose">
+                <label for="difficulty">Обери складність</label>
+                <select id="difficulty">
+                    <option value="easy" selected>Легко</option>
+                    <option value="medium">Нада думати</option>
+                    <option value="hard">Визнай поразку</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="two-player-element" style="display: none;flex-grow: 1">
+            <label class="names">Назвіть себе
+                <input type="text" id="player1" name="player1" placeholder="Перший гравець">
+                <input type="text" id="player2" name="player2" placeholder="Другий гравець">
+            </label>
+        </div>
+
+        <button class="play_button" id="play-button">Грати</button>
     </div>
-
-    <label class="names" style="display: none">Назвіть себе
-        <input type="text" id="player1" name="player1" placeholder="Перший гравець">
-        <input type="text" id="player2" name="player2" placeholder="Другий гравець">
-    </label>
 
 </div>
 <div class="menu">
@@ -72,5 +81,6 @@
         stylesheet.href = themes[savedTheme];
     }
 </script>
+<script src="choose.js"></script>
 </body>
 </html>
