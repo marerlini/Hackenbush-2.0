@@ -1,66 +1,123 @@
-// Імпортуємо необхідні модулі
-const express = require("express");
-const bodyParser = require("body-parser");
+const express = require('express');
+const bodyParser = require('body-parser');
+const fs = require('fs');
+const path = require('path');
 
 const app = express();
 const PORT = 3000;
+const DATA_FILE = path.join(__dirname, 'data', 'graphs.json');
 
-// Масив для зберігання графів
-const graphs = [
-    {
-        nodes: [
-            { x: 100, y: 600, isGround: true },
-            { x: 100, y: 420, isGround: false },
-            { x: 100, y: 300, isGround: false },
-            { x: 200, y: 100, isGround: false },
-            { x: 340, y: 300, isGround: false },
-            { x: 340, y: 420, isGround: false },
-            { x: 600, y: 100, isGround: false },
-            { x: 700, y: 300, isGround: false },
-            { x: 500, y: 600, isGround: true },
-            { x: 500, y: 340, isGround: false },
-            { x: 700, y: 340, isGround: false },
-            { x: 700, y: 600, isGround: true },
-        ],
-        edges: [
-            { from: 0, to: 1 },
-            { from: 1, to: 2 },
-            { from: 2, to: 3 },
-            { from: 1, to: 5 },
-            { from: 4, to: 5 },
-            { from: 2, to: 4 },
-            { from: 3, to: 6 },
-            { from: 4, to: 7 },
-            { from: 6, to: 7 },
-            { from: 7, to: 10 },
-            { from: 8, to: 9 },
-            { from: 9, to: 10 },
-            { from: 10, to: 11 },
-        ],
-    },
-];
-
-// Вмикаємо парсер для JSON
 app.use(bodyParser.json());
 
-// Маршрут для отримання всіх графів
-app.get("/graphs", (req, res) => {
+// Завантажуємо графи з файлу
+function loadGraphs() {
+    try {
+        const data = fs.readFileSync(DATA_FILE, 'utf8');
+        return JSON.parse(data);
+    } catch (err) {
+        // Якщо файл не існує, повертаємо пустий масив
+        return [];
+    }
+}
+
+// Зберігає графи у файл
+function saveGraphs(graphs) {
+    fs.writeFileSync(DATA_FILE, JSON.stringify(graphs, null, 2), 'utf8');
+}
+
+// Додаємо початкові дані, якщо файл порожній
+if (loadGraphs().length === 0) {
+    const initialGraphs = [
+        {
+            id: 1,
+            name: "Приклад графу",
+            nodes: [
+                { x: 200, y: 600, isGround: true },
+                { x: 500, y: 600, isGround: true },
+                { x: 500, y: 480, isGround: false },
+                // ... інші вузли
+            ],
+            edges: [
+                { from: 0, to: 7 },
+                { from: 5, to: 7 },
+                // ... інші зв'язки
+            ]
+        }
+    ];
+    saveGraphs(initialGraphs);
+}
+
+// Отримати всі графи
+app.get('/graphs', (req, res) => {
+    const graphs = loadGraphs();
     res.json(graphs);
 });
 
-// Маршрут для додавання нового графа
-app.post("/graphs", (req, res) => {
-    const newGraph = req.body;
+// Отримати конкретний граф по ID
+app.get('/graphs/:id', (req, res) => {
+    const graphs = loadGraphs();
+    const graph = graphs.find(g => g.id === parseInt(req.params.id));
 
-    if (!newGraph.nodes || !newGraph.edges) {
-        return res.status(400).json({ error: "Graph must contain nodes and edges." });
+    if (!graph) {
+        return res.status(404).json({ error: 'Graph not found' });
     }
 
+    res.json(graph);
+});
+
+// Додати новий граф
+app.post('/graphs', (req, res) => {
+    const graphs = loadGraphs();
+    const newGraph = req.body;
+
+    if (!newGraph.name || !newGraph.nodes || !newGraph.edges) {
+        return res.status(400).json({ error: 'Missing required fields: name, nodes, edges' });
+    }
+
+    // Генеруємо новий ID
+    const newId = graphs.length > 0 ? Math.max(...graphs.map(g => g.id)) + 1 : 1;
+    newGraph.id = newId;
+
     graphs.push(newGraph);
-    res.status(201).json({ message: "Graph added successfully.", graphs });
+    saveGraphs(graphs);
+
+    res.status(201).json(newGraph);
+});
+
+// Оновити існуючий граф
+app.put('/graphs/:id', (req, res) => {
+    const graphs = loadGraphs();
+    const graphIndex = graphs.findIndex(g => g.id === parseInt(req.params.id));
+
+    if (graphIndex === -1) {
+        return res.status(404).json({ error: 'Graph not found' });
+    }
+
+    const updatedGraph = req.body;
+    updatedGraph.id = parseInt(req.params.id);
+
+    graphs[graphIndex] = updatedGraph;
+    saveGraphs(graphs);
+
+    res.json(updatedGraph);
+});
+
+// Видалити граф
+app.delete('/graphs/:id', (req, res) => {
+    const graphs = loadGraphs();
+    const filteredGraphs = graphs.filter(g => g.id !== parseInt(req.params.id));
+
+    if (filteredGraphs.length === graphs.length) {
+        return res.status(404).json({ error: 'Graph not found' });
+    }
+
+    saveGraphs(filteredGraphs);
+    res.status(204).send();
 });
 
 // Запуск сервера
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+app.use(express.static('public'));

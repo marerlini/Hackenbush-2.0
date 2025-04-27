@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="play_css/play.css">
-    <link id="themeStylesheet" rel="stylesheet" href="play_css/play_green.css">
+    <link rel="stylesheet" href="create_css/create.css">
+    <link id="themeStylesheet" rel="stylesheet" href="">
     <link rel="stylesheet" href="rules/rules.css">
     <title>Hackenbush</title>
 </head>
@@ -12,14 +12,15 @@
     <canvas id="graphCanvas"></canvas>
 </div>
 <div class="menu">
-    <h2 id="turnIndicator">Гравець ходить</h2>
+    <form>
+        <label for="nameInput">Назви своє творіння</label>
+        <input type="text" id="nameInput" name="nameInput" placeholder="Тобі потім за цим шукати...">
+    </form>
 
-    <div class="whinerThing" id="whinerThing" style="display: none">
-        <h2 id="whiner">Ти</h2>
-        <h3>Переміг</h3>
-    </div>
-
-    <button id="returnToMenu" onclick="returnToMenu()">Назад в меню</button>
+    <button id="AddNode">Додати точку</button>
+    <button id="AddEdges">Додати ребро</button>
+    <button id="ClearAll">Очистити все</button>
+    <button id="saveCreat">Зберегти</button>
 
 </div>
 <div class="rules" id="showPopup">Правила</div>
@@ -35,12 +36,13 @@
     </div>
 </div>
 <script src="rules/rules.js"></script>
+<script src="create.js"></script>
 <script>
     const themes = {
-        "Зелень": "play_css/play_green.css",
-        "Квіочки": "play_css/play_flower.css",
-        "Чорний": "play_css/play_black.css",
-        "Білий": "play_css/play_white.css"
+        "Зелень": "create_css/create_green.css",
+        "Квіочки": "create_css/create_flower.css",
+        "Чорний": "create_css/create_black.css",
+        "Білий": "create_css/create_white.css"
     };
 
     const savedTheme = localStorage.getItem('selectedTheme');
@@ -50,6 +52,5 @@
         stylesheet.href = themes[savedTheme];
     }
 </script>
-<script src="play.js"></script>
 </body>
 </html>

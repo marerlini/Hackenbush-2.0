@@ -1,0 +1,384 @@
+[
+  {
+    "id": 1,
+    "name": "Приклад графу",
+    "nodes": [
+      {
+        "x": 200,
+        "y": 600,
+        "isGround": true
+      },
+      {
+        "x": 500,
+        "y": 600,
+        "isGround": true
+      },
+      {
+        "x": 500,
+        "y": 480,
+        "isGround": false
+      }
+    ],
+    "edges": [
+      {
+        "from": 0,
+        "to": 7
+      },
+      {
+        "from": 5,
+        "to": 7
+      }
+    ]
+  },
+  {
+    "name": "хуй",
+    "nodes": [
+      {
+        "x": 123,
+        "y": 153.5,
+        "isGround": false
+      },
+      {
+        "x": 354,
+        "y": 390.5,
+        "isGround": false
+      },
+      {
+        "x": 624,
+        "y": 131.5,
+        "isGround": false
+      },
+      {
+        "x": 404,
+        "y": 151.5,
+        "isGround": false
+      }
+    ],
+    "edges": [
+      {
+        "from": 0,
+        "to": 1
+      },
+      {
+        "from": 1,
+        "to": 2
+      },
+      {
+        "from": 2,
+        "to": 3
+      },
+      {
+        "from": 3,
+        "to": 0
+      }
+    ],
+    "id": 2
+  },
+  {
+    "name": "Хуй_2",
+    "nodes": [
+      {
+        "x": 208,
+        "y": 601.5,
+        "isGround": true
+      },
+      {
+        "x": 149,
+        "y": 574.5,
+        "isGround": false
+      },
+      {
+        "x": 133,
+        "y": 513.5,
+        "isGround": false
+      },
+      {
+        "x": 165,
+        "y": 461.5,
+        "isGround": false
+      },
+      {
+        "x": 242,
+        "y": 448.5,
+        "isGround": false
+      },
+      {
+        "x": 286,
+        "y": 484.5,
+        "isGround": false
+      },
+      {
+        "x": 310,
+        "y": 531.5,
+        "isGround": false
+      },
+      {
+        "x": 269,
+        "y": 576.5,
+        "isGround": false
+      },
+      {
+        "x": 343,
+        "y": 527.5,
+        "isGround": false
+      },
+      {
+        "x": 359,
+        "y": 475.5,
+        "isGround": false
+      },
+      {
+        "x": 392,
+        "y": 441.5,
+        "isGround": false
+      },
+      {
+        "x": 458,
+        "y": 428.5,
+        "isGround": false
+      },
+      {
+        "x": 514,
+        "y": 447.5,
+        "isGround": false
+      },
+      {
+        "x": 543,
+        "y": 498.5,
+        "isGround": false
+      },
+      {
+        "x": 549,
+        "y": 541.5,
+        "isGround": false
+      },
+      {
+        "x": 515,
+        "y": 588.5,
+        "isGround": false
+      },
+      {
+        "x": 462,
+        "y": 602.5,
+        "isGround": true
+      },
+      {
+        "x": 402,
+        "y": 586.5,
+        "isGround": false
+      },
+      {
+        "x": 369,
+        "y": 563.5,
+        "isGround": false
+      },
+      {
+        "x": 214,
+        "y": 394.5,
+        "isGround": false
+      },
+      {
+        "x": 208,
+        "y": 303.5,
+        "isGround": false
+      },
+      {
+        "x": 222,
+        "y": 234.5,
+        "isGround": false
+      },
+      {
+        "x": 240,
+        "y": 149.5,
+        "isGround": false
+      },
+      {
+        "x": 297,
+        "y": 95.5,
+        "isGround": false
+      },
+      {
+        "x": 353,
+        "y": 103.5,
+        "isGround": false
+      },
+      {
+        "x": 379,
+        "y": 149.5,
+        "isGround": false
+      },
+      {
+        "x": 406,
+        "y": 261.5,
+        "isGround": false
+      },
+      {
+        "x": 417,
+        "y": 328.5,
+        "isGround": false
+      }
+    ],
+    "edges": [
+      {
+        "from": 19,
+        "to": 20
+      },
+      {
+        "from": 20,
+        "to": 21
+      },
+      {
+        "from": 21,
+        "to": 22
+      },
+      {
+        "from": 22,
+        "to": 23
+      },
+      {
+        "from": 23,
+        "to": 24
+      },
+      {
+        "from": 24,
+        "to": 25
+      },
+      {
+        "from": 25,
+        "to": 26
+      },
+      {
+        "from": 26,
+        "to": 27
+      },
+      {
+        "from": 27,
+        "to": 10
+      },
+      {
+        "from": 10,
+        "to": 9
+      },
+      {
+        "from": 9,
+        "to": 8
+      },
+      {
+        "from": 8,
+        "to": 18
+      },
+      {
+        "from": 18,
+        "to": 17
+      },
+      {
+        "from": 17,
+        "to": 16
+      },
+      {
+        "from": 15,
+        "to": 16
+      },
+      {
+        "from": 15,
+        "to": 14
+      },
+      {
+        "from": 14,
+        "to": 13
+      },
+      {
+        "from": 13,
+        "to": 12
+      },
+      {
+        "from": 12,
+        "to": 11
+      },
+      {
+        "from": 11,
+        "to": 10
+      },
+      {
+        "from": 8,
+        "to": 6
+      },
+      {
+        "from": 6,
+        "to": 5
+      },
+      {
+        "from": 4,
+        "to": 5
+      },
+      {
+        "from": 4,
+        "to": 19
+      },
+      {
+        "from": 19,
+        "to": 3
+      },
+      {
+        "from": 3,
+        "to": 2
+      },
+      {
+        "from": 2,
+        "to": 1
+      },
+      {
+        "from": 1,
+        "to": 0
+      },
+      {
+        "from": 0,
+        "to": 7
+      },
+      {
+        "from": 7,
+        "to": 6
+      },
+      {
+        "from": 3,
+        "to": 4
+      },
+      {
+        "from": 27,
+        "to": 11
+      }
+    ],
+    "id": 3
+  },
+  {
+    "name": "тест",
+    "nodes": [
+      {
+        "x": 235,
+        "y": 427.5,
+        "isGround": false
+      },
+      {
+        "x": 555,
+        "y": 335.5,
+        "isGround": false
+      },
+      {
+        "x": 674,
+        "y": 600.5,
+        "isGround": true
+      }
+    ],
+    "edges": [
+      {
+        "from": 0,
+        "to": 1
+      },
+      {
+        "from": 1,
+        "to": 2
+      }
+    ],
+    "id": 4
+  }
+]

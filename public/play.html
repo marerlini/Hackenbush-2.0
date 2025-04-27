@@ -2,41 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="menu_css/menu.css">
-    <link id="themeStylesheet" rel="stylesheet" href="menu_css/menu_green.css">
+    <link rel="stylesheet" href="play_css/play.css">
+    <link id="themeStylesheet" rel="stylesheet" href="">
     <link rel="stylesheet" href="rules/rules.css">
     <title>Hackenbush</title>
 </head>
 <body>
 <div class="left">
-    <h1 class="menuTitle">Hackenbush</h1>
-    <img class="bushImg" src="menu_css/pictures/bush.jpg" alt="кущик">
-    <div class="styles">
-        <ul>
-            <li>
-                <input type="radio" id="option1" name="options" value="Зелень">
-                <label for="option1">Зелень</label>
-            </li>
-            <li>
-                <input type="radio" id="option2" name="options" value="Квіочки">
-                <label for="option2">Квіочки</label>
-            </li>
-            <li>
-                <input type="radio" id="option3" name="options" value="Чорний">
-                <label for="option3">Чорний</label>
-            </li>
-            <li>
-                <input type="radio" id="option4" name="options" value="Білий">
-                <label for="option4">Білий</label>
-            </li>
-        </ul>
-    </div>
+    <canvas id="graphCanvas"></canvas>
 </div>
 <div class="menu">
-    <button id="single-player-btn">Грати одному</button>
-    <button id="two-player-btn">Грати вдвох</button>
+    <h2 id="turnIndicator">Гравець ходить</h2>
 
-    <button class="createGrBt" id="goToPage">Створити свій малюнок</button>
+    <div class="whinerThing" id="whinerThing" style="display: none">
+        <h2 id="whiner">Ти</h2>
+        <h3>Переміг</h3>
+    </div>
+
+    <button id="returnToMenu" onclick="returnToMenu()">Назад в меню</button>
 
 </div>
 <div class="rules" id="showPopup">Правила</div>
@@ -52,6 +35,21 @@
     </div>
 </div>
 <script src="rules/rules.js"></script>
-<script src="menu.js"></script>
+<script>
+    const themes = {
+        "Зелень": "play_css/play_green.css",
+        "Квіочки": "play_css/play_flower.css",
+        "Чорний": "play_css/play_black.css",
+        "Білий": "play_css/play_white.css"
+    };
+
+    const savedTheme = localStorage.getItem('selectedTheme');
+    const stylesheet = document.getElementById('themeStylesheet');
+
+    if (savedTheme && themes[savedTheme]) {
+        stylesheet.href = themes[savedTheme];
+    }
+</script>
+<script src="play.js"></script>
 </body>
 </html>
