@@ -13,6 +13,10 @@ document.getElementById('goToPage').addEventListener('click', function() {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
+    localStorage.removeItem('gameMode');
+    localStorage.removeItem('selectedGraphNumber');
+    localStorage.removeItem('selectedGraphId');
+
     const radioButtons = document.querySelectorAll('input[name="options"]');
     const stylesheet = document.getElementById('themeStylesheet');
 

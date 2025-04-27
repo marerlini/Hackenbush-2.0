@@ -70,12 +70,22 @@ app.post('/graphs', (req, res) => {
     const graphs = loadGraphs();
     const newGraph = req.body;
 
+    // Перевірка обов'язкових полів
     if (!newGraph.name || !newGraph.nodes || !newGraph.edges) {
         return res.status(400).json({ error: 'Missing required fields: name, nodes, edges' });
     }
 
+    // Перевірка на унікальність назви (case insensitive)
+    const nameExists = graphs.some(
+        graph => graph.name.toLowerCase() === newGraph.name.trim().toLowerCase()
+    );
+
+    if (nameExists) {
+        return res.status(409).json({ error: 'Graph with this name already exists' });
+    }
+
     // Генеруємо новий ID
-    newGraph.id = graphs.length > 0 ? Math.max(...graphs.map(g => g.id)) + 1 : 1;;
+    newGraph.id = graphs.length > 0 ? Math.max(...graphs.map(g => g.id)) + 1 : 1;
 
     graphs.push(newGraph);
     saveGraphs(graphs);
@@ -112,6 +122,15 @@ app.delete('/graphs/:id', (req, res) => {
 
     saveGraphs(filteredGraphs);
     res.status(204).send();
+});
+
+app.get('/graphs-minimal', (req, res) => {
+    const graphs = loadGraphs(); // Ваша функція для завантаження графів
+    const minimalData = graphs.map(graph => ({
+        id: graph.id,
+        name: graph.name || "Без назви"
+    }));
+    res.json(minimalData);
 });
 
 // Запуск сервера

@@ -1,36 +1,5 @@
 [
   {
-    "id": 1,
-    "name": "Приклад графу",
-    "nodes": [
-      {
-        "x": 200,
-        "y": 600,
-        "isGround": true
-      },
-      {
-        "x": 500,
-        "y": 600,
-        "isGround": true
-      },
-      {
-        "x": 500,
-        "y": 480,
-        "isGround": false
-      }
-    ],
-    "edges": [
-      {
-        "from": 0,
-        "to": 7
-      },
-      {
-        "from": 5,
-        "to": 7
-      }
-    ]
-  },
-  {
     "name": "хуй",
     "nodes": [
       {
@@ -380,5 +349,191 @@
       }
     ],
     "id": 4
+  },
+  {
+    "name": "хуй3",
+    "nodes": [
+      {
+        "x": 378,
+        "y": 307.5,
+        "isGround": false
+      },
+      {
+        "x": 473,
+        "y": 547.5,
+        "isGround": false
+      },
+      {
+        "x": 698,
+        "y": 603.5,
+        "isGround": true
+      }
+    ],
+    "edges": [
+      {
+        "from": 0,
+        "to": 1
+      },
+      {
+        "from": 1,
+        "to": 2
+      }
+    ],
+    "id": 5
+  },
+  {
+    "name": "квітка",
+    "nodes": [
+      {
+        "x": 354,
+        "y": 211.5,
+        "isGround": false
+      },
+      {
+        "x": 286,
+        "y": 266.5,
+        "isGround": false
+      },
+      {
+        "x": 315,
+        "y": 345.5,
+        "isGround": false
+      },
+      {
+        "x": 433,
+        "y": 293.5,
+        "isGround": false
+      },
+      {
+        "x": 215,
+        "y": 115.5,
+        "isGround": false
+      },
+      {
+        "x": 188,
+        "y": 228.5,
+        "isGround": false
+      },
+      {
+        "x": 334,
+        "y": 105.5,
+        "isGround": false
+      },
+      {
+        "x": 505,
+        "y": 117.5,
+        "isGround": false
+      },
+      {
+        "x": 465,
+        "y": 452.5,
+        "isGround": false
+      },
+      {
+        "x": 192,
+        "y": 394.5,
+        "isGround": false
+      },
+      {
+        "x": 315,
+        "y": 485.5,
+        "isGround": false
+      },
+      {
+        "x": 588,
+        "y": 273.5,
+        "isGround": false
+      },
+      {
+        "x": 409,
+        "y": 513.5,
+        "isGround": false
+      },
+      {
+        "x": 511,
+        "y": 604.5,
+        "isGround": true
+      },
+      {
+        "x": 621,
+        "y": 416.5,
+        "isGround": false
+      }
+    ],
+    "edges": [
+      {
+        "from": 0,
+        "to": 1
+      },
+      {
+        "from": 1,
+        "to": 2
+      },
+      {
+        "from": 2,
+        "to": 3
+      },
+      {
+        "from": 3,
+        "to": 0
+      },
+      {
+        "from": 4,
+        "to": 1
+      },
+      {
+        "from": 4,
+        "to": 0
+      },
+      {
+        "from": 0,
+        "to": 6
+      },
+      {
+        "from": 0,
+        "to": 7
+      },
+      {
+        "from": 7,
+        "to": 3
+      },
+      {
+        "from": 5,
+        "to": 1
+      },
+      {
+        "from": 1,
+        "to": 9
+      },
+      {
+        "from": 2,
+        "to": 9
+      },
+      {
+        "from": 3,
+        "to": 11
+      },
+      {
+        "from": 2,
+        "to": 8
+      },
+      {
+        "from": 8,
+        "to": 3
+      },
+      {
+        "from": 2,
+        "to": 10
+      },
+      {
+        "from": 10,
+        "to": 12
+      },
+      {
+        "from": 12,
+        "to": 13
+      }
+    ],
+    "id": 6
   }
 ]

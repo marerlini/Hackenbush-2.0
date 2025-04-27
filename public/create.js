@@ -174,18 +174,31 @@ saveButton.addEventListener('click', async function() {
     try {
         const response = await fetch('http://localhost:3000/graphs', {
             method: 'POST',
-            headers: {'Content-Type': 'application/json',},
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(futureGraph)
         });
+
         if (response.ok) {
             alert('Граф успішно збережено!');
             window.location.href = 'index.html';
-        } else {
-            throw new Error('Помилка при збереженні');
+            return;
         }
+
+        // Обробка специфічних HTTP статусів
+        if (response.status === 409) {
+            throw new Error(`Граф з назвою "${futureGraph.name}" вже існує!`);
+        }
+
+        throw new Error(`Помилка сервера: ${response.status}`);
+
     } catch (error) {
         console.error('Помилка:', error);
-        alert('Сталася помилка при збереженні графа');
+
+        if (error.message.includes('вже існує')) {
+            alert(error.message); // Специфічне повідомлення про конфлікт імен
+        } else {
+            alert('Сталася помилка при збереженні графа: ' + error.message);
+        }
     }
 });
 
@@ -208,6 +221,13 @@ clearAllBtn.addEventListener('click', function() {
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawGroundLine();
+});
+
+document.querySelector('#nameInput').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault(); // Забороняє стандартне оновлення
+        this.blur();
+    }
 });
 
 window.addEventListener('load', function() {

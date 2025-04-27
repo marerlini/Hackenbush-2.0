@@ -5,278 +5,9 @@ canvas.height = 615;
 document.addEventListener("contextmenu", function(event) {
     event.preventDefault();
 });
-
-const graphs = [
-    {
-        nodes: [
-            { x: 200, y: 600, isGround: true },
-            { x: 500, y: 600, isGround: true },
-            { x: 500, y: 480, isGround: false },
-            { x: 560, y: 540, isGround: false },
-            { x: 440, y: 540, isGround: false },
-            { x: 200, y: 480, isGround: false },
-            { x: 260, y: 540, isGround: false },
-            { x: 140, y: 540, isGround: false },
-            { x: 700, y: 540, isGround: false },
-            { x: 700, y: 460, isGround: false },
-            { x: 600, y: 440, isGround: false },
-            { x: 500, y: 340, isGround: false },
-            { x: 60, y: 460, isGround: false },
-            { x: 80, y: 540, isGround: false },
-            { x: 100, y: 340, isGround: false },
-            { x: 200, y: 380, isGround: false },
-            { x: 420, y: 380, isGround: false },
-            { x: 420, y: 260, isGround: false },
-            { x: 200, y: 260, isGround: false },
-            { x: 300, y: 260, isGround: false },
-            { x: 300, y: 380, isGround: false },
-
-        ],
-        edges: [
-            { from: 0, to: 7 },
-            { from: 5, to: 7 },
-            { from: 5, to: 6 },
-            { from: 0, to: 6 },
-            { from: 7, to: 13 },
-            { from: 12, to: 13 },
-            { from: 12, to: 14 },
-            { from: 14, to: 18 },
-            { from: 18, to: 19 },
-            { from: 19, to: 17 },
-            { from: 11, to: 17 },
-            { from: 11, to: 16 },
-            { from: 16, to: 20 },
-            { from: 15, to: 20 },
-            { from: 19, to: 20 },
-            { from: 10, to: 11 },
-            { from: 10, to: 9 },
-            { from: 9, to: 8 },
-            { from: 8, to: 3 },
-            { from: 3, to: 2 },
-            { from: 1, to: 4 },
-            { from: 2, to: 4 },
-            { from: 1, to: 3 },
-            { from: 4, to: 6 },
-            { from: 15, to: 14 },
-        ],
-    },
-    {
-        nodes: [
-            { x: 200, y: 300, isGround: false },
-            { x: 600, y: 300, isGround: false },
-            { x: 400, y: 150, isGround: false },
-            { x: 310, y: 175, isGround: false },
-            { x: 235, y: 225, isGround: false },
-            { x: 400, y: 300, isGround: false },
-            { x: 300, y: 300, isGround: false },
-            { x: 500, y: 300, isGround: false },
-            { x: 250, y: 380, isGround: false },
-            { x: 300, y: 450, isGround: false },
-            { x: 250, y: 525, isGround: false },
-            { x: 300, y: 600, isGround: true },
-            { x: 550, y: 375, isGround: false },
-            { x: 550, y: 450, isGround: false },
-            { x: 500, y: 525, isGround: false },
-            { x: 550, y: 600, isGround: true },
-            { x: 380, y: 380, isGround: false },
-            { x: 430, y: 430, isGround: false },
-            { x: 400, y: 500, isGround: false },
-            { x: 490, y: 175, isGround: false },
-            { x: 565, y: 225, isGround: false },
-        ],
-        edges: [
-            { from: 0, to: 4 },
-            { from: 4, to: 3 },
-            { from: 3, to: 2 },
-            { from: 2, to: 19 },
-            { from: 19, to: 20 },
-            { from: 20, to: 1 },
-            { from: 1, to:  7},
-            { from: 7, to: 5 },
-            { from: 5, to:  6},
-            { from: 6, to: 8 },
-            { from: 8, to: 9 },
-            { from: 9, to: 10 },
-            { from: 10, to: 11 },
-            { from: 5, to: 16 },
-            { from: 16, to: 17 },
-            { from: 17, to: 18 },
-            { from: 7, to: 12 },
-            { from: 12, to: 13 },
-            { from: 13, to: 14 },
-            { from: 14, to: 15 },
-            { from: 0, to: 6 },
-        ],
-
-    },
-    {
-        nodes: [
-            { x: 100, y: 600, isGround: true },
-            { x: 100, y: 420, isGround: false },
-            { x: 100, y: 300, isGround: false },
-            { x: 200, y: 100, isGround: false },
-            { x: 340, y: 300, isGround: false },
-            { x: 340, y: 420, isGround: false },
-            { x: 600, y: 100, isGround: false },
-            { x: 700, y: 300, isGround: false },
-            { x: 500, y: 600, isGround: true },
-            { x: 500, y: 340, isGround: false },
-            { x: 700, y: 340, isGround: false },
-            { x: 700, y: 600, isGround: true },
-        ],
-        edges: [
-            { from: 0, to: 1 },
-            { from: 1, to: 2 },
-            { from: 2, to: 3 },
-            { from: 1, to: 5 },
-            { from: 4, to: 5 },
-            { from: 2, to: 4 },
-            { from: 3, to: 6 },
-            { from: 4, to: 7 },
-            { from: 6, to: 7 },
-            { from: 7, to: 10 },
-            { from: 8, to: 9 },
-            { from: 9, to: 10 },
-            { from: 10, to: 11 },
-        ],
-    },
-    {
-        nodes: [
-            { x: 100, y: 350, isGround: false },
-            { x: 150, y: 250, isGround: false },
-            { x: 200, y: 300, isGround: false },
-            { x: 300, y: 400, isGround: false },
-            { x: 250, y: 500, isGround: false },
-            { x: 250, y: 600, isGround: true },
-            { x: 320, y: 500, isGround: false },
-            { x: 350, y: 600, isGround: true },
-            { x: 600, y: 400, isGround: false },
-            { x: 650, y: 350, isGround: false },
-            { x: 700, y: 400, isGround: false },
-            { x: 550, y: 500, isGround: false },
-            { x: 550, y: 600, isGround: true },
-            { x: 620, y: 500, isGround: false },
-            { x: 650, y: 600, isGround: true },
-        ],
-        edges: [
-            { from: 0, to: 1 },
-            { from: 1, to: 2 },
-            { from: 2, to: 0 },
-            { from: 2, to: 3 },
-            { from: 3, to: 4 },
-            { from: 4, to: 5 },
-            { from: 3, to: 6 },
-            { from: 6, to: 7 },
-            { from: 3, to: 8 },
-            { from: 8, to: 9 },
-            { from: 9, to: 10 },
-            { from: 8, to: 11 },
-            { from: 11, to: 12 },
-            { from: 8, to: 13 },
-            { from: 13, to: 14 },
-        ],
-    },
-    {
-        nodes: [
-            { x: 150, y: 600, isGround: true },
-            { x: 150, y: 500, isGround: false },
-            { x: 250, y: 400, isGround: false },
-            { x: 350, y: 350, isGround: false },
-            { x: 450, y: 400, isGround: false },
-            { x: 550, y: 500, isGround: false },
-            { x: 550, y: 600, isGround: true },
-            { x: 300, y: 450, isGround: false },
-            { x: 400, y: 450, isGround: false },
-            { x: 200, y: 300, isGround: false },
-            { x: 500, y: 300, isGround: false },
-            { x: 700, y: 500, isGround: false },
-            { x: 700, y: 600, isGround: true },
-            { x: 100, y: 400, isGround: false },
-            { x: 600, y: 400, isGround: false },
-            { x: 400, y: 200, isGround: false },
-            { x: 300, y: 250, isGround: false },
-            { x: 500, y: 250, isGround: false },
-            { x: 600, y: 200, isGround: false },
-        ],
-        edges: [
-            { from: 0, to: 1 },
-            { from: 1, to: 2 },
-            { from: 2, to: 7 },
-            { from: 7, to: 3 },
-            { from: 7, to: 8 },
-            { from: 3, to: 8 },
-            { from: 3, to: 4 },
-            { from: 4, to: 8 },
-            { from: 8, to: 5 },
-            { from: 5, to: 6 },
-            { from: 8, to: 10 },
-            { from: 7, to: 9 },
-            { from: 9, to: 13 },
-            { from: 13, to: 1 },
-            { from: 10, to: 15 },
-            { from: 15, to: 16 },
-            { from: 16, to: 17 },
-            { from: 17, to: 18 },
-            { from: 18, to: 14 },
-            { from: 14, to: 10 },
-            { from: 14, to: 5 },
-            { from: 12, to: 11 },
-            { from: 11, to: 5 },
-            { from: 12, to: 6 },
-        ],
-    },
-    {
-        nodes: [
-            { x: 150, y: 600, isGround: true },
-            { x: 150, y: 500, isGround: false },
-            { x: 150, y: 400, isGround: false },
-
-            { x: 350, y: 600, isGround: true },
-            { x: 350, y: 400, isGround: false },
-            { x: 350, y: 300, isGround: false },
-
-            { x: 550, y: 600, isGround: true },
-            { x: 550, y: 400, isGround: false },
-            { x: 550, y: 300, isGround: false },
-
-            { x: 150, y: 200, isGround: false },
-            { x: 100, y: 300, isGround: false },
-            { x: 200, y: 300, isGround: false },
-
-            { x: 300, y: 200, isGround: false },
-            { x: 400, y: 200, isGround: false },
-
-            { x: 700, y: 400, isGround: false },
-            { x: 700, y: 300, isGround: false },
-            { x: 700, y: 200, isGround: false },
-            { x: 600, y: 100, isGround: false },
-            { x: 500, y: 100, isGround: false },
-            { x: 500, y: 200, isGround: false },
-        ],
-        edges: [
-            { from: 1, to: 2 },
-            { from: 3, to: 4 },
-            { from: 4, to: 5 },
-            { from: 6, to: 7 },
-            { from: 7, to: 8 },
-            { from: 2, to: 10 },
-            { from: 2, to: 11 },
-            { from: 11, to: 9 },
-            { from: 10, to: 9 },
-            { from: 5, to: 12 },
-            { from: 5, to: 13 },
-            { from: 0, to: 1 },
-
-            { from: 14, to: 8 },
-            { from: 15, to: 8 },
-            { from: 16, to: 8 },
-            { from: 17, to: 8 },
-            { from: 18, to: 17 },
-            { from: 19, to: 17 },
-            { from: 19, to: 18 },
-        ],
-    },
-];
+let graphs =[];
+const selectedGraphNumber = localStorage.getItem("selectedGraphNumber");
+const selectedGraphId = localStorage.getItem("selectedGraphId");
 
 let currentGraph = -1;
 let selectedEdge = null;
@@ -312,7 +43,7 @@ if(theme === "Чорний"){
 
 
 
-    const gameMode = localStorage.getItem("gameMode");
+const gameMode = localStorage.getItem("gameMode");
 if (gameMode === "TwoPlayer"){
     isComputerPlayer = false;
     player1 = localStorage.getItem("player1");
@@ -330,19 +61,327 @@ function returnToMenu() {
     });
 }
 
-window.onload = function loadGraph() {
-    currentGraph = localStorage.getItem("selectedGraphNumber");
+window.onload = async function loadGraph() { // Додаємо async
+    console.log('Завантаження графа...');
+
+    if(selectedGraphNumber) {
+        currentGraph = selectedGraphNumber;
+        graphs = [
+            {
+                nodes: [
+                    { x: 200, y: 600, isGround: true },
+                    { x: 500, y: 600, isGround: true },
+                    { x: 500, y: 480, isGround: false },
+                    { x: 560, y: 540, isGround: false },
+                    { x: 440, y: 540, isGround: false },
+                    { x: 200, y: 480, isGround: false },
+                    { x: 260, y: 540, isGround: false },
+                    { x: 140, y: 540, isGround: false },
+                    { x: 700, y: 540, isGround: false },
+                    { x: 700, y: 460, isGround: false },
+                    { x: 600, y: 440, isGround: false },
+                    { x: 500, y: 340, isGround: false },
+                    { x: 60, y: 460, isGround: false },
+                    { x: 80, y: 540, isGround: false },
+                    { x: 100, y: 340, isGround: false },
+                    { x: 200, y: 380, isGround: false },
+                    { x: 420, y: 380, isGround: false },
+                    { x: 420, y: 260, isGround: false },
+                    { x: 200, y: 260, isGround: false },
+                    { x: 300, y: 260, isGround: false },
+                    { x: 300, y: 380, isGround: false },
+
+                ],
+                edges: [
+                    { from: 0, to: 7 },
+                    { from: 5, to: 7 },
+                    { from: 5, to: 6 },
+                    { from: 0, to: 6 },
+                    { from: 7, to: 13 },
+                    { from: 12, to: 13 },
+                    { from: 12, to: 14 },
+                    { from: 14, to: 18 },
+                    { from: 18, to: 19 },
+                    { from: 19, to: 17 },
+                    { from: 11, to: 17 },
+                    { from: 11, to: 16 },
+                    { from: 16, to: 20 },
+                    { from: 15, to: 20 },
+                    { from: 19, to: 20 },
+                    { from: 10, to: 11 },
+                    { from: 10, to: 9 },
+                    { from: 9, to: 8 },
+                    { from: 8, to: 3 },
+                    { from: 3, to: 2 },
+                    { from: 1, to: 4 },
+                    { from: 2, to: 4 },
+                    { from: 1, to: 3 },
+                    { from: 4, to: 6 },
+                    { from: 15, to: 14 },
+                ],
+            },
+            {
+                nodes: [
+                    { x: 200, y: 300, isGround: false },
+                    { x: 600, y: 300, isGround: false },
+                    { x: 400, y: 150, isGround: false },
+                    { x: 310, y: 175, isGround: false },
+                    { x: 235, y: 225, isGround: false },
+                    { x: 400, y: 300, isGround: false },
+                    { x: 300, y: 300, isGround: false },
+                    { x: 500, y: 300, isGround: false },
+                    { x: 250, y: 380, isGround: false },
+                    { x: 300, y: 450, isGround: false },
+                    { x: 250, y: 525, isGround: false },
+                    { x: 300, y: 600, isGround: true },
+                    { x: 550, y: 375, isGround: false },
+                    { x: 550, y: 450, isGround: false },
+                    { x: 500, y: 525, isGround: false },
+                    { x: 550, y: 600, isGround: true },
+                    { x: 380, y: 380, isGround: false },
+                    { x: 430, y: 430, isGround: false },
+                    { x: 400, y: 500, isGround: false },
+                    { x: 490, y: 175, isGround: false },
+                    { x: 565, y: 225, isGround: false },
+                ],
+                edges: [
+                    { from: 0, to: 4 },
+                    { from: 4, to: 3 },
+                    { from: 3, to: 2 },
+                    { from: 2, to: 19 },
+                    { from: 19, to: 20 },
+                    { from: 20, to: 1 },
+                    { from: 1, to:  7},
+                    { from: 7, to: 5 },
+                    { from: 5, to:  6},
+                    { from: 6, to: 8 },
+                    { from: 8, to: 9 },
+                    { from: 9, to: 10 },
+                    { from: 10, to: 11 },
+                    { from: 5, to: 16 },
+                    { from: 16, to: 17 },
+                    { from: 17, to: 18 },
+                    { from: 7, to: 12 },
+                    { from: 12, to: 13 },
+                    { from: 13, to: 14 },
+                    { from: 14, to: 15 },
+                    { from: 0, to: 6 },
+                ],
+
+            },
+            {
+                nodes: [
+                    { x: 100, y: 600, isGround: true },
+                    { x: 100, y: 420, isGround: false },
+                    { x: 100, y: 300, isGround: false },
+                    { x: 200, y: 100, isGround: false },
+                    { x: 340, y: 300, isGround: false },
+                    { x: 340, y: 420, isGround: false },
+                    { x: 600, y: 100, isGround: false },
+                    { x: 700, y: 300, isGround: false },
+                    { x: 500, y: 600, isGround: true },
+                    { x: 500, y: 340, isGround: false },
+                    { x: 700, y: 340, isGround: false },
+                    { x: 700, y: 600, isGround: true },
+                ],
+                edges: [
+                    { from: 0, to: 1 },
+                    { from: 1, to: 2 },
+                    { from: 2, to: 3 },
+                    { from: 1, to: 5 },
+                    { from: 4, to: 5 },
+                    { from: 2, to: 4 },
+                    { from: 3, to: 6 },
+                    { from: 4, to: 7 },
+                    { from: 6, to: 7 },
+                    { from: 7, to: 10 },
+                    { from: 8, to: 9 },
+                    { from: 9, to: 10 },
+                    { from: 10, to: 11 },
+                ],
+            },
+            {
+                nodes: [
+                    { x: 100, y: 350, isGround: false },
+                    { x: 150, y: 250, isGround: false },
+                    { x: 200, y: 300, isGround: false },
+                    { x: 300, y: 400, isGround: false },
+                    { x: 250, y: 500, isGround: false },
+                    { x: 250, y: 600, isGround: true },
+                    { x: 320, y: 500, isGround: false },
+                    { x: 350, y: 600, isGround: true },
+                    { x: 600, y: 400, isGround: false },
+                    { x: 650, y: 350, isGround: false },
+                    { x: 700, y: 400, isGround: false },
+                    { x: 550, y: 500, isGround: false },
+                    { x: 550, y: 600, isGround: true },
+                    { x: 620, y: 500, isGround: false },
+                    { x: 650, y: 600, isGround: true },
+                ],
+                edges: [
+                    { from: 0, to: 1 },
+                    { from: 1, to: 2 },
+                    { from: 2, to: 0 },
+                    { from: 2, to: 3 },
+                    { from: 3, to: 4 },
+                    { from: 4, to: 5 },
+                    { from: 3, to: 6 },
+                    { from: 6, to: 7 },
+                    { from: 3, to: 8 },
+                    { from: 8, to: 9 },
+                    { from: 9, to: 10 },
+                    { from: 8, to: 11 },
+                    { from: 11, to: 12 },
+                    { from: 8, to: 13 },
+                    { from: 13, to: 14 },
+                ],
+            },
+            {
+                nodes: [
+                    { x: 150, y: 600, isGround: true },
+                    { x: 150, y: 500, isGround: false },
+                    { x: 250, y: 400, isGround: false },
+                    { x: 350, y: 350, isGround: false },
+                    { x: 450, y: 400, isGround: false },
+                    { x: 550, y: 500, isGround: false },
+                    { x: 550, y: 600, isGround: true },
+                    { x: 300, y: 450, isGround: false },
+                    { x: 400, y: 450, isGround: false },
+                    { x: 200, y: 300, isGround: false },
+                    { x: 500, y: 300, isGround: false },
+                    { x: 700, y: 500, isGround: false },
+                    { x: 700, y: 600, isGround: true },
+                    { x: 100, y: 400, isGround: false },
+                    { x: 600, y: 400, isGround: false },
+                    { x: 400, y: 200, isGround: false },
+                    { x: 300, y: 250, isGround: false },
+                    { x: 500, y: 250, isGround: false },
+                    { x: 600, y: 200, isGround: false },
+                ],
+                edges: [
+                    { from: 0, to: 1 },
+                    { from: 1, to: 2 },
+                    { from: 2, to: 7 },
+                    { from: 7, to: 3 },
+                    { from: 7, to: 8 },
+                    { from: 3, to: 8 },
+                    { from: 3, to: 4 },
+                    { from: 4, to: 8 },
+                    { from: 8, to: 5 },
+                    { from: 5, to: 6 },
+                    { from: 8, to: 10 },
+                    { from: 7, to: 9 },
+                    { from: 9, to: 13 },
+                    { from: 13, to: 1 },
+                    { from: 10, to: 15 },
+                    { from: 15, to: 16 },
+                    { from: 16, to: 17 },
+                    { from: 17, to: 18 },
+                    { from: 18, to: 14 },
+                    { from: 14, to: 10 },
+                    { from: 14, to: 5 },
+                    { from: 12, to: 11 },
+                    { from: 11, to: 5 },
+                    { from: 12, to: 6 },
+                ],
+            },
+            {
+                nodes: [
+                    { x: 150, y: 600, isGround: true },
+                    { x: 150, y: 500, isGround: false },
+                    { x: 150, y: 400, isGround: false },
+
+                    { x: 350, y: 600, isGround: true },
+                    { x: 350, y: 400, isGround: false },
+                    { x: 350, y: 300, isGround: false },
+
+                    { x: 550, y: 600, isGround: true },
+                    { x: 550, y: 400, isGround: false },
+                    { x: 550, y: 300, isGround: false },
+
+                    { x: 150, y: 200, isGround: false },
+                    { x: 100, y: 300, isGround: false },
+                    { x: 200, y: 300, isGround: false },
+
+                    { x: 300, y: 200, isGround: false },
+                    { x: 400, y: 200, isGround: false },
+
+                    { x: 700, y: 400, isGround: false },
+                    { x: 700, y: 300, isGround: false },
+                    { x: 700, y: 200, isGround: false },
+                    { x: 600, y: 100, isGround: false },
+                    { x: 500, y: 100, isGround: false },
+                    { x: 500, y: 200, isGround: false },
+                ],
+                edges: [
+                    { from: 1, to: 2 },
+                    { from: 3, to: 4 },
+                    { from: 4, to: 5 },
+                    { from: 6, to: 7 },
+                    { from: 7, to: 8 },
+                    { from: 2, to: 10 },
+                    { from: 2, to: 11 },
+                    { from: 11, to: 9 },
+                    { from: 10, to: 9 },
+                    { from: 5, to: 12 },
+                    { from: 5, to: 13 },
+                    { from: 0, to: 1 },
+
+                    { from: 14, to: 8 },
+                    { from: 15, to: 8 },
+                    { from: 16, to: 8 },
+                    { from: 17, to: 8 },
+                    { from: 18, to: 17 },
+                    { from: 19, to: 17 },
+                    { from: 19, to: 18 },
+                ],
+            },
+        ];
+        console.log('Граф готовий (локальний):', graphs[0]);
+    }
+    else if(selectedGraphId) {
+        currentGraph = 0;
+
+        // Виносимо оголошення graphs на глобальний рівень
+        graphs = [];
+
+        async function loadFormattedGraph(id) {
+            try {
+                const response = await fetch(`http://localhost:3000/graphs/${id}`);
+                if (!response.ok) throw new Error('Граф не знайдено');
+                return await response.json();
+            } catch (error) {
+                console.error('Помилка:', error);
+                return null;
+            }
+        }
+
+        // Чекаємо на завантаження даних
+        const loadedGraph = await loadFormattedGraph(selectedGraphId);
+
+        graphs = [
+            loadedGraph || { nodes: [], edges: [] },
+            { nodes: [], edges: [] } // Порожній граф
+        ];
+
+        if (graphs[0].nodes.length) {
+            console.log('Граф завантажено:', graphs[0]);
+        } else {
+            console.error('Не вдалося завантажити граф');
+        }
+    }
+
+    // Ініціалізація гри
     selectedEdge = null;
     currentPlayer = 1;
     canvas.style.display = 'block';
-    if (currentPlayer === 2 && !isComputerPlayer) {
-        document.getElementById('turnIndicator').innerText = player2 + " ходить";
-    } else {
-        document.getElementById('turnIndicator').innerText = player1 + " ходить";
-    }
-    drawGraph();
-}
 
+    if (graphs[currentGraph]) {
+        drawGraph(); // Викликаємо тільки після ініціалізації graphs
+    } else {
+        console.error('Немає даних для відображення');
+    }
+};
 function drawGroundLine() {
     ctx.beginPath();
     ctx.moveTo(0, canvas.height - 15);
@@ -356,6 +395,9 @@ function drawGroundLine() {
 
 function drawGraph() {
     const graph = graphs[currentGraph];
+    console.log('Граф готовий до використання: з малювання', graph);
+    console.log('номер', currentGraph);
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawGroundLine();
     graph.edges.forEach(edge => {
