@@ -75,8 +75,7 @@ app.post('/graphs', (req, res) => {
     }
 
     // Генеруємо новий ID
-    const newId = graphs.length > 0 ? Math.max(...graphs.map(g => g.id)) + 1 : 1;
-    newGraph.id = newId;
+    newGraph.id = graphs.length > 0 ? Math.max(...graphs.map(g => g.id)) + 1 : 1;;
 
     graphs.push(newGraph);
     saveGraphs(graphs);
