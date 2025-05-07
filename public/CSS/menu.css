@@ -1,0 +1,70 @@
+body{
+    height: 90vh;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    grid-template-rows: 1fr;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+.left{
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+.menuTitle{
+    font-size: 700% ;
+}
+.bushImg{
+    height: 60%;
+}
+.styles{
+    font-size: 200% ;
+
+}
+.styles ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    gap: 15px;
+}
+.styles li {
+    display: flex;
+    align-items: center;
+}
+
+.styles ul input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.styles p{
+    font-size: 50%;
+    margin: 5px;
+}
+
+.menu{
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 10vw;
+    height: 50vh;
+}
+.menu button{
+    height: 10vh;
+    width: 30vh;
+    border-radius: 15px;
+}
+.rules{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 5px;
+}

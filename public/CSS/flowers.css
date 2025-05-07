@@ -1,0 +1,62 @@
+body{
+    background-color: #dfa4cb;
+    font-family: "Gill Sans", sans-serif;
+    color: #150c12;
+}
+button {
+    position: relative;
+    display: inline-block;
+    margin: 20px;
+    padding: 20px 40px;
+
+    color: white;
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 120%;
+    text-align: center;
+    text-decoration: none;
+
+    background-color: #d27db5;
+    border: none;
+    border-radius: 5px;
+    box-shadow:
+            inset 0 1px 0 #f6e5f0,
+            5px 10px 0 #93577e;
+
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    user-select: none;
+
+    &:active {
+        transform: translate(5px, 10px);
+        background-color: #d27db5;
+
+        box-shadow:
+                inset 0 1px 0 #f6e5f0,
+                inset -3px -3px 0 #93577e;
+
+        &::after {
+            bottom: -5px;
+            right: -5px;
+        }
+    }
+}
+#graphCanvas{
+    background-color: #f6e5f0;
+}
+.testGraph{
+    background-color: #cb6aaa;
+    border: #dfa4cb solid 3px;
+}
+.Testsearch{
+    border: solid 5px #cb6aaa;
+    border-radius: 8px;
+    background-color: #cb6aaa;
+}
+.testGraph.selected {
+    border: 3px solid #cf3b92;
+}
+.graph-list li.selected {
+    background-color: #d27db5;
+    /*color: white;*/
+}

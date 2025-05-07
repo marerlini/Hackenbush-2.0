@@ -34,13 +34,11 @@ if (loadGraphs().length === 0) {
             nodes: [
                 { x: 200, y: 600, isGround: true },
                 { x: 500, y: 600, isGround: true },
-                { x: 500, y: 480, isGround: false },
-                // ... інші вузли
+                { x: 500, y: 480, isGround: false }
             ],
             edges: [
                 { from: 0, to: 7 },
-                { from: 5, to: 7 },
-                // ... інші зв'язки
+                { from: 5, to: 7 }
             ]
         }
     ];

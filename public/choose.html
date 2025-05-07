@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="choose_css/choose.css">
+    <link rel="stylesheet" href="CSS/choose.css">
     <link id="themeStylesheet" rel="stylesheet" href="">
     <link rel="stylesheet" href="rules/rules.css">
     <title>Hackenbush</title>
@@ -26,8 +26,8 @@
                 <label for="difficulty">Обери складність</label>
                 <select id="difficulty">
                     <option value="easy" selected>Легко</option>
-                    <option value="medium">Нада думати</option>
-                    <option value="hard">Визнай поразку</option>
+                    <option value="medium">Важче</option>
+                    <option value="hard">Складно</option>
                 </select>
             </div>
         </div>
@@ -68,10 +68,10 @@
 <script src="rules/rules.js"></script>
 <script>
     const themes = {
-        "Зелень": "choose_css/choose_green.css",
-        "Квіочки": "choose_css/choose_flower.css",
-        "Чорний": "choose_css/choose_black.css",
-        "Білий": "choose_css/choose_white.css"
+        "Зелень": "CSS/green.css",
+        "Квіочки": "CSS/flowers.css",
+        "Чорний": "CSS/black.css",
+        "Білий": "CSS/white.css"
     };
 
     const savedTheme = localStorage.getItem('selectedTheme');

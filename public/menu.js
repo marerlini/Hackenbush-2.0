@@ -21,10 +21,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const stylesheet = document.getElementById('themeStylesheet');
 
     const themes = {
-        "Зелень": "menu_css/menu_green.css",
-        "Квіочки": "menu_css/menu_flowers.css",
-        "Чорний": "menu_css/menu_black.css",
-        "Білий": "menu_css/menu_white.css"
+        "Зелень": "CSS/green.css",
+        "Квіочки": "CSS/flowers.css",
+        "Чорний": "CSS/black.css",
+        "Білий": "CSS/white.css"
     };
 
     const savedTheme = localStorage.getItem('selectedTheme');

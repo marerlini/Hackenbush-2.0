@@ -1,26 +1,28 @@
 const theme = localStorage.getItem("selectedTheme");
 if(theme === "Чорний"){
-    edgeColor = 'DimGrey';
-    SelectedColor = '#333333';
-    DeletedColor = 'LightSlateGrey';
+    edgeColor = '#b0b0b4';
+    SelectedColor = '#ebebec';
+    Buthon = '#4e4e56';
 }else if (theme === "Зелень"){
-    edgeColor = 'DarkGreen';
-    SelectedColor = 'Chartreuse';
-    DeletedColor = 'LightSlateGray';
+    edgeColor = '#6c8c6e';
+    SelectedColor = '#364637';
+    Buthon = '#578527';
 }else if(theme === "Білий"){
-    edgeColor = 'RosyBrown';
-    SelectedColor = 'Maroon';
-    DeletedColor = 'Wheat';
+    edgeColor = '#409CD1';
+    SelectedColor = '#f09609';
+    Buthon = '#F09609';
 }else if(theme === "Квіочки"){
-    edgeColor = 'MediumSlateBlue';
-    SelectedColor = 'Orchid';
-    DeletedColor = 'LightBlue';
+    edgeColor = '#994D8D';
+    SelectedColor = '#6b3562';
+    Buthon = '#BD70A2';
 }
 let futureGraph = {
     name: "",
     nodes: [],
     edges: []
 };
+
+const MAX_NODES = 50;
 
 const canvas = document.getElementById('graphCanvas');
 const ctx = canvas.getContext('2d');
@@ -29,6 +31,7 @@ const saveButton = document.getElementById('saveCreat');
 const addNodeBtn = document.getElementById('AddNode');
 const addEdgeBtn = document.getElementById('AddEdges');
 const clearAllBtn = document.getElementById('ClearAll');
+const AlertDiv = document.getElementById('alert');
 
 let isAddingNodes = false;
 let isAddingEdges = false;
@@ -72,7 +75,7 @@ function drawGraph() {
     futureGraph.nodes.forEach((node, index) => {
         ctx.beginPath();
         ctx.arc(node.x, node.y, 10, 0, Math.PI * 2);
-        ctx.fillStyle = node.isGround ? '#4CAF50' :
+        ctx.fillStyle = node.isGround ? Buthon :
             (index === selectedNodeIndex ? SelectedColor : edgeColor);
         ctx.fill();
         ctx.fillStyle = edgeColor;
@@ -97,13 +100,17 @@ function handleCanvasClick(e) {
     const groundThreshold = 10;
 
     if (isAddingNodes) {
-        const isGround = Math.abs(y - groundY) < groundThreshold;
-        futureGraph.nodes.push({
-            x: x,
-            y: y,
-            isGround: isGround
-        });
-        drawGraph();
+        if (futureGraph.nodes.length < MAX_NODES) {
+            const isGround = Math.abs(y - groundY) < groundThreshold;
+            futureGraph.nodes.push({
+                x: x,
+                y: y,
+                isGround: isGround
+            });
+            drawGraph();
+        } else {
+            AlertDiv.innerText =  `Досягнуто максимум ${MAX_NODES} вузлів!`;
+        }
     }
     else if (isAddingEdges) {
         const nodeIndex = findClosestNode(x, y);
@@ -135,7 +142,7 @@ addNodeBtn.addEventListener('click', function() {
     isAddingEdges = false;
     selectedNodeIndex = null;
 
-    this.style.backgroundColor = isAddingNodes ? '#ff9999' : '';
+    this.style.backgroundColor = isAddingNodes ? Buthon : '';
     addEdgeBtn.style.backgroundColor = '';
     canvas.style.cursor = isAddingNodes ? 'crosshair' : 'default';
 });
@@ -144,7 +151,7 @@ addEdgeBtn.addEventListener('click', function() {
     isAddingEdges = !isAddingEdges;
     isAddingNodes = false;
 
-    this.style.backgroundColor = isAddingEdges ? '#ff9999' : '';
+    this.style.backgroundColor = isAddingEdges ? Buthon : '';
     addNodeBtn.style.backgroundColor = '';
     canvas.style.cursor = isAddingEdges ? 'pointer' : 'default';
 
@@ -156,16 +163,16 @@ addEdgeBtn.addEventListener('click', function() {
 
 saveButton.addEventListener('click', async function() {
     if (futureGraph.edges.length === 0) {
-        alert('Додайте хоча б одне ребро!');
+        AlertDiv.innerText =  "Додайте хоча б одне ребро!";
         return;
     }
     const hasGroundNode = futureGraph.nodes.some(node => node.isGround);
     if (!hasGroundNode) {
-        alert('Додайте хоча б одну точку землі (на лінії внизу)!');
+        AlertDiv.innerText =  "Додайте хоча б одну точку землі (на лінії внизу)!";
         return;
     }
     if (!nameInput.value.trim()) {
-        alert("Будь ласка, дайте назву вашому графу!");
+        AlertDiv.innerText =  "Будь ласка, дайте назву вашому графу!";
         nameInput.focus();
         return;
     }
@@ -179,23 +186,21 @@ saveButton.addEventListener('click', async function() {
         });
 
         if (response.ok) {
-            alert('Граф успішно збережено!');
             window.location.href = 'index.html';
             return;
         }
 
         // Обробка специфічних HTTP статусів
         if (response.status === 409) {
-            throw new Error(`Граф з назвою "${futureGraph.name}" вже існує!`);
+            AlertDiv.innerText =  `Граф з назвою "${futureGraph.name}" вже існує!`;
+
         }
 
         throw new Error(`Помилка сервера: ${response.status}`);
 
     } catch (error) {
-        console.error('Помилка:', error);
-
         if (error.message.includes('вже існує')) {
-            alert(error.message); // Специфічне повідомлення про конфлікт імен
+            alert(error.message);
         } else {
             alert('Сталася помилка при збереженні графа: ' + error.message);
         }
@@ -210,6 +215,7 @@ clearAllBtn.addEventListener('click', function() {
     };
 
     nameInput.value = "";
+    AlertDiv.innerText =  "";
 
     isAddingNodes = false;
     isAddingEdges = false;

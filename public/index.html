@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="menu_css/menu.css">
+    <link rel="stylesheet" href="CSS/menu.css">
     <link id="themeStylesheet" rel="stylesheet" href="">
     <link rel="stylesheet" href="rules/rules.css">
     <title>Hackenbush</title>
@@ -10,24 +10,33 @@
 <body>
 <div class="left">
     <h1 class="menuTitle">Hackenbush</h1>
-    <img class="bushImg" src="menu_css/pictures/bush.jpg" alt="кущик">
+    <img class="bushImg" src="pictures/bush.png" alt="кущик">
     <div class="styles">
+        <p>Вибери тему <3</p>
         <ul>
             <li>
                 <input type="radio" id="option1" name="options" value="Зелень">
-                <label for="option1">Зелень</label>
+                <label for="option1">
+                    <img src="pictures/gab.png" style="height: 15vh">
+                </label>
             </li>
             <li>
                 <input type="radio" id="option2" name="options" value="Квіочки">
-                <label for="option2">Квіочки</label>
+                <label for="option2">
+                    <img src="pictures/sakura.png" style="height: 15vh">
+                </label>
             </li>
             <li>
                 <input type="radio" id="option3" name="options" value="Чорний">
-                <label for="option3">Чорний</label>
+                <label for="option3">
+                    <img src="pictures/crow.png" style="height: 15vh">
+                </label>
             </li>
             <li>
                 <input type="radio" id="option4" name="options" value="Білий">
-                <label for="option4">Білий</label>
+                <label for="option4">
+                    <img src="pictures/качечьк.png" style="height: 15vh">
+                </label>
             </li>
         </ul>
     </div>
@@ -35,9 +44,7 @@
 <div class="menu">
     <button id="single-player-btn">Грати одному</button>
     <button id="two-player-btn">Грати вдвох</button>
-
     <button class="createGrBt" id="goToPage">Створити свій малюнок</button>
-
 </div>
 <div class="rules" id="showPopup">Правила</div>
 <div class="overlay" id="popupOverlay">

@@ -2,14 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="create_css/create.css">
+    <link rel="stylesheet" href="CSS/create.css">
     <link id="themeStylesheet" rel="stylesheet" href="">
     <link rel="stylesheet" href="rules/rules.css">
     <title>Hackenbush</title>
+    <script>
+        const themes = {
+            "Зелень": "CSS/green.css",
+            "Квіочки": "CSS/flowers.css",
+            "Чорний": "CSS/black.css",
+            "Білий": "CSS/white.css"
+        };
+
+        const savedTheme = localStorage.getItem('selectedTheme');
+        const stylesheet = document.getElementById('themeStylesheet');
+
+        if (savedTheme && themes[savedTheme]) {
+            stylesheet.href = themes[savedTheme];
+        }
+    </script>
 </head>
 <body>
 <div class="left">
     <canvas id="graphCanvas"></canvas>
+    <div class="Alert" id="alert"></div>
 </div>
 <div class="menu">
     <form>
@@ -23,34 +39,28 @@
     <button id="saveCreat">Зберегти</button>
 
 </div>
-<div class="rules" id="showPopup">Правила</div>
+<div class="rules" id="showPopup">Як створити малюнок</div>
 <div class="overlay" id="popupOverlay">
     <div class="popup">
-        <h2>Правила</h2>
+        <h2>Як створювати свій малюнок?</h2>
         <p>
-            <strong>Хакенбуш</strong> — це математична гра на графах, у якій гравці по черзі видаляють ребра. У варіанті "зелений Хакенбуш" всі ребра є нейтральними, і будь-який гравець може видалити будь-яке доступне ребро.
-            Поле гри складається з графа, де вершини з'єднані між собою ребрами, а деякі вершини прикріплені до "землі". Гравці ходять по черзі, і якщо після видалення ребра будь-які вершини або ребра залишаються від'єднаними від "землі", вони також видаляються.
-            Мета гри — змусити суперника залишитися без доступного ходу. Гра закінчується, коли один із гравців не може ходити, і він програє. У зеленому варіанті важлива стратегія, яка включає аналіз доступних ребер та розрахунок наслідків їх видалення.
+            Натисни кнопку Додати точку і клікай на полотно щоб зявились точки, якшо натиснеш Додати ребро, то зможеш зєднати свої точки лініями. Для цього клікни спочатку на одну, а потім і на іншу точку і між ними зявиться лінія. Якщо додати точку на нижній пунктирній лінії - вона буде іншого кольору це твої точки землі - все що звязано з ними відповідно зєднано з землею.
+            Можеш малювати все що заманеться, але щоб зберегти і потім грати є певні вимоги до твого творіння:
+
         </p>
+        <ul style="text-align: start; padding: 10px 0 10px 0;">
+            <li>На малюнку повина бути мінімум одна лінія(ребро), відповідно мінімум 2 точки;</li>
+            <li>Одна з точок повинна бути землею, і памятай що все що не звязано з нею пропаде ще до того як хтось з вас зробить перший хід;</li>
+            <li>Ти не обмежений в фантазій, але обмежений в кількості точок, 50 це максимум(і те якшо граєш з другом, якшо сам то бери менше і пожалій компʼютер);</li>
+            <li>Назви малюнок перед збереженням, а то як ти потім його знайдеш?</li>
+        </ul>
+        <p>
+            Якщо ти помилився - це не помилка, а так задумувалоссь. Але якшо натиснути Очистити все то завжди можна почати з чистого листа.</p>
+
         <button id="closePopup">Закрити</button>
     </div>
 </div>
 <script src="rules/rules.js"></script>
 <script src="create.js"></script>
-<script>
-    const themes = {
-        "Зелень": "create_css/create_green.css",
-        "Квіочки": "create_css/create_flower.css",
-        "Чорний": "create_css/create_black.css",
-        "Білий": "create_css/create_white.css"
-    };
-
-    const savedTheme = localStorage.getItem('selectedTheme');
-    const stylesheet = document.getElementById('themeStylesheet');
-
-    if (savedTheme && themes[savedTheme]) {
-        stylesheet.href = themes[savedTheme];
-    }
-</script>
 </body>
 </html>

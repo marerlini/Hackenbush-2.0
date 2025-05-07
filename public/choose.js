@@ -33,7 +33,7 @@ graphElements.forEach((el) => {
     el.addEventListener('click', function () {
         if (el.classList.contains('selected')) {
             el.classList.remove('selected');
-            selectedGraphNumber = null; // Скидання вибору
+            selectedGraphNumber = null;
         } else {
             graphElements.forEach(e => e.classList.remove('selected'));
             el.classList.add('selected');
@@ -51,7 +51,7 @@ playButton.addEventListener("click", function () {
     } else if (selectedGraphId) {
         localStorage.setItem('selectedGraphId', selectedGraphId);
     } else {
-        document.getElementById('graph-dumb').innerText = "Вибери на чому грати, дебіл!";
+        document.getElementById('graph-dumb').innerText = "Вибери малюнок!";
         return;
     }
 

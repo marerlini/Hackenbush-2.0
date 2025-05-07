@@ -24,21 +24,21 @@ let DeletedColor = 'LightSlateGrey';
 // Вибір стилю
 const theme = localStorage.getItem("selectedTheme");
 if(theme === "Чорний"){
-    edgeColor = 'DimGrey';
-    SelectedColor = '#333333';
-    DeletedColor = 'LightSlateGrey';
+    edgeColor = '#b0b0b4';
+    SelectedColor = '#ebebec';
+    DeletedColor = '#626269';
 }else if (theme === "Зелень"){
-    edgeColor = 'DarkGreen';
-    SelectedColor = 'Chartreuse';
-    DeletedColor = 'LightSlateGray';
+    edgeColor = '#6c8c6e';
+    SelectedColor = '#364637';
+    DeletedColor = '#c4d1c5';
 }else if(theme === "Білий"){
-    edgeColor = 'RosyBrown';
-    SelectedColor = 'Maroon';
-    DeletedColor = 'Wheat';
+    edgeColor = '#409CD1';
+    SelectedColor = '#f09609';
+    DeletedColor = '#7ebce0';
 }else if(theme === "Квіочки"){
-    edgeColor = 'MediumSlateBlue';
-    SelectedColor = 'Orchid';
-    DeletedColor = 'LightBlue';
+    edgeColor = '#994D8D';
+    SelectedColor = '#6b3562';
+    DeletedColor = '#d6b7d1';
 }
 
 
@@ -48,7 +48,7 @@ if (gameMode === "TwoPlayer"){
     isComputerPlayer = false;
     player1 = localStorage.getItem("player1");
     player2 = localStorage.getItem("player2");
-    currentPlayer = Math.floor(Math.random() * 2) + 1;
+    currentPlayer = 1;
 }
 
 function returnToMenu() {
@@ -62,7 +62,6 @@ function returnToMenu() {
 }
 
 window.onload = async function loadGraph() { // Додаємо async
-    console.log('Завантаження графа...');
 
     if(selectedGraphNumber) {
         currentGraph = selectedGraphNumber;
@@ -337,12 +336,10 @@ window.onload = async function loadGraph() { // Додаємо async
                 ],
             },
         ];
-        console.log('Граф готовий (локальний):', graphs[0]);
     }
     else if(selectedGraphId) {
         currentGraph = 0;
 
-        // Виносимо оголошення graphs на глобальний рівень
         graphs = [];
 
         async function loadFormattedGraph(id) {
@@ -356,19 +353,12 @@ window.onload = async function loadGraph() { // Додаємо async
             }
         }
 
-        // Чекаємо на завантаження даних
         const loadedGraph = await loadFormattedGraph(selectedGraphId);
 
         graphs = [
             loadedGraph || { nodes: [], edges: [] },
             { nodes: [], edges: [] } // Порожній граф
         ];
-
-        if (graphs[0].nodes.length) {
-            console.log('Граф завантажено:', graphs[0]);
-        } else {
-            console.error('Не вдалося завантажити граф');
-        }
     }
 
     // Ініціалізація гри
@@ -377,9 +367,14 @@ window.onload = async function loadGraph() { // Додаємо async
     canvas.style.display = 'block';
 
     if (graphs[currentGraph]) {
-        drawGraph(); // Викликаємо тільки після ініціалізації graphs
+        removeIsolatedNodes(graphs[currentGraph]);
+        drawGraph();
+    }
+
+    if (currentPlayer === 1) {
+        document.getElementById('turnIndicator').innerText =  player1+ " ходить";
     } else {
-        console.error('Немає даних для відображення');
+        document.getElementById('turnIndicator').innerText = player2 + " ходить";
     }
 };
 function drawGroundLine() {
