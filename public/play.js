@@ -344,7 +344,7 @@ window.onload = async function loadGraph() { // Додаємо async
 
         async function loadFormattedGraph(id) {
             try {
-                const response = await fetch(`http://localhost:3000/graphs/${id}`);
+                const response = await fetch(`/graphs/${id}`);
                 if (!response.ok) throw new Error('Граф не знайдено');
                 return await response.json();
             } catch (error) {
