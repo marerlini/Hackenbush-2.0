@@ -179,7 +179,7 @@ saveButton.addEventListener('click', async function() {
     futureGraph.name = nameInput.value.trim();
 
     try {
-        const response = await fetch('http://localhost:3000/graphs', {
+        const response = await fetch('/graphs', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(futureGraph)
