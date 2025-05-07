@@ -91,7 +91,7 @@ async function loadGraphsList(searchText = '') {
     try {
         // Завантажуємо графи тільки якщо ще не завантажені
         if (allGraphs.length === 0) {
-            const response = await fetch('http://localhost:3000/graphs-minimal');
+            const response = await fetch('/graphs-minimal');
             allGraphs = await response.json();
         }
 
